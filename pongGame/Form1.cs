@@ -14,6 +14,8 @@ namespace pongGame
     {
         const int mouvementBarSpeed = 8, topMap = 1, bottomMap = 659;
         bool isUpPressedForPlayer1, isDowPressedForPlayer1, isUpPressedForPlayer2, isDowPressedForPlayer2;
+        bool? accelerationPlayer1, accelerationPlayer2;
+        int nbrTickAccSameDirPlayer1, nbrTickAccSameDirPlayer2;
 
         public Form1()
         {
@@ -24,12 +26,12 @@ namespace pongGame
         {
             //bool? Mean that no value is not an option : 0 1 or bull            
             //barPlayer1.Location = new Point(barPlayer1.Location.X, barPlayer1.Location.Y + mouvementBarSpeed);
-
-            mvmtForbothPlayer(barPlayer1, isUpPressedForPlayer1, isDowPressedForPlayer1);
-            mvmtForbothPlayer(barPlayer2, isUpPressedForPlayer2, isDowPressedForPlayer2);
+            // ref : pointer to mofication at long term
+            mvmtForbothPlayer(barPlayer1, isUpPressedForPlayer1, isDowPressedForPlayer1, ref accelerationPlayer1 , ref nbrTickAccSameDirPlayer1);
+            mvmtForbothPlayer(barPlayer2, isUpPressedForPlayer2, isDowPressedForPlayer2, ref accelerationPlayer2 , ref nbrTickAccSameDirPlayer2);
         }
 
-        private void mvmtForbothPlayer(PictureBox barplayer, bool isUpPressed, bool isDownPressed)
+        private void mvmtForbothPlayer(PictureBox barplayer, bool isUpPressed, bool isDownPressed, ref bool? accelerationPlayer, ref int nbrTickAccPlayer)
         {
             bool? goingUpOrDown = null;
 
@@ -49,14 +51,32 @@ namespace pongGame
                 }
             }
 
-            barMovement(barplayer, goingUpOrDown);
+            if (accelerationPlayer.HasValue)
+            {
+                if (!goingUpOrDown.HasValue){
+                    accelerationPlayer = null;
+                    nbrTickAccPlayer = 0;
+                } else if (accelerationPlayer.Value == goingUpOrDown.Value){
+                    nbrTickAccPlayer++;
+                } else{
+                    accelerationPlayer = goingUpOrDown;
+                    nbrTickAccPlayer = 1;
+                }
+            } else if (goingUpOrDown.HasValue) {
+                accelerationPlayer = goingUpOrDown;
+                nbrTickAccPlayer = 1;
+            }
+
+            barMovement(barplayer, goingUpOrDown, nbrTickAccPlayer);
         }
 
-        private void barMovement(PictureBox barDeJeux, bool? goingUpOrDown)
+        private void barMovement(PictureBox barDeJeux, bool? goingUpOrDown, int nbrTickAccPlayer)
         {
             if (goingUpOrDown.HasValue)
             {
-                var speed = mouvementBarSpeed;//var auto signed
+
+                //var speed = mouvementBarSpeed * (nbrTickAccPlayer / 10);//var auto signed
+                var speed = (int)Math.Round(mouvementBarSpeed * ((float)nbrTickAccPlayer / 10));
                 if (goingUpOrDown.Value){
                     speed *= -1;
                 }
