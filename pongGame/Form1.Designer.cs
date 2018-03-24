@@ -94,7 +94,7 @@
             this.theBall.Image = ((System.Drawing.Image)(resources.GetObject("theBall.Image")));
             this.theBall.Location = new System.Drawing.Point(435, 404);
             this.theBall.Name = "theBall";
-            this.theBall.Size = new System.Drawing.Size(26, 26);
+            this.theBall.Size = new System.Drawing.Size(20, 20);
             this.theBall.TabIndex = 2;
             this.theBall.TabStop = false;
             // 

@@ -81,8 +81,8 @@ namespace pongGame
                     speed *= -1;
                 }
 
-                barPlayer.Location = new Point(barPlayer.Location.X + speed,
-                    Math.Max(MapInfo.TOP_MAP, Math.Min(MapInfo.BOTTOM_MAP, barPlayer.Location.Y + speed)));
+                barPlayer.Location = new Point(barPlayer.Location.X,
+                    Math.Max(MapInfo.TOP_MAP, Math.Min(MapInfo.BOTTOM_MAP - barPlayer.Height, barPlayer.Location.Y + speed)));
             }
         }
 

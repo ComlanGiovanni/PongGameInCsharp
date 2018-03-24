@@ -23,8 +23,16 @@ namespace pongGame
         //Method
         internal void mvmtForBall()
         {
+            var bottomMap = MapInfo.BOTTOM_MAP - theBall.Height;
             //throw new NotImplementedException();
-            theBall.Location = new Point(theBall.Location.X + xSpeed, Math.Max(MapInfo.TOP_MAP, Math.Min(MapInfo.BOTTOM_MAP, barPlayer.Location.Y + speed)));
+            theBall.Location = new Point(theBall.Location.X + xSpeed,
+                    Math.Max(MapInfo.TOP_MAP, Math.Min(bottomMap, theBall.Location.Y + ySpeed)));
+
+            if (theBall.Location.Y == bottomMap || theBall.Location.Y  == MapInfo.TOP_MAP)// | always check the second one
+            {
+                ySpeed *= -1;
+            }
+
         }
     }
 }
