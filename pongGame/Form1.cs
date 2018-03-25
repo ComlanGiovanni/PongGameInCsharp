@@ -20,11 +20,10 @@ namespace pongGame
 
             InitializeComponent();
             //object
-            player1 = new Player(barPlayer1);
-            player2 = new Player(barPlayer2);
-            ball = new Ball(theBall);
-
-           
+            player1 = new Player(barPlayer1, scorePlayer1);
+            player2 = new Player(barPlayer2, scorePlayer2);
+            ball = new Ball(theBall, player1, player2);
+            
         }
 
         private void theTimer_Tick(object sender, EventArgs e)

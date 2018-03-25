@@ -101,7 +101,9 @@
             // scorePlayer1
             // 
             this.scorePlayer1.AutoSize = true;
+            this.scorePlayer1.BackColor = System.Drawing.Color.Transparent;
             this.scorePlayer1.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scorePlayer1.ForeColor = System.Drawing.SystemColors.Control;
             this.scorePlayer1.Location = new System.Drawing.Point(477, 43);
             this.scorePlayer1.Name = "scorePlayer1";
             this.scorePlayer1.Size = new System.Drawing.Size(104, 120);
@@ -112,6 +114,7 @@
             // 
             this.scorePlayer2.AutoSize = true;
             this.scorePlayer2.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scorePlayer2.ForeColor = System.Drawing.SystemColors.Control;
             this.scorePlayer2.Location = new System.Drawing.Point(617, 43);
             this.scorePlayer2.Name = "scorePlayer2";
             this.scorePlayer2.Size = new System.Drawing.Size(104, 120);

@@ -12,12 +12,18 @@ namespace pongGame
     {
         //constructor
         private PictureBox theBall;
-        int xSpeed = 3;
-        int ySpeed = 3;
+        Player playerSideLeft, playerSideRight;
 
-        public Ball(PictureBox theBall)
+        int xSpeed , ySpeed;
+
+        // the player object
+        public Ball(PictureBox theBall, Player playerSideLeft, Player playerSideRight)
         {
             this.theBall = theBall;
+            this.playerSideLeft = playerSideLeft;
+            this.playerSideRight = playerSideRight;
+            xSpeed = 3;
+            ySpeed = 3;
         }
         
         //Method
@@ -33,6 +39,22 @@ namespace pongGame
                 ySpeed *= -1;
             }
 
+            // if(theBall.Location.X ==  MapInfo.leftMap || theBall.Location.Y == MapInfo.rigthMap - theBall.Width)
+            if (theBall.Location.X ==  MapInfo.leftMap)
+            {
+                //Method
+                score(playerSideLeft);
+            } else if (theBall.Location.Y == MapInfo.rigthMap - theBall.Width) {
+                score(playerSideRight);
+            }
+
+        }
+
+        private void score(Player playerLeftorRightWin)
+        {
+            playerLeftorRightWin.score++;
+            theBall.Location = new Point((MapInfo.leftMap + MapInfo.rigthMap) / 2, (MapInfo.BOTTOM_MAP + MapInfo.TOP_MAP) / 2);
+           // throw new NotImplementedException();
         }
     }
 }

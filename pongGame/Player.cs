@@ -10,17 +10,38 @@ namespace pongGame
         const int MVMT_BAR_SPEED = 8;
 
         private PictureBox barPlayer;
+        private Label scorePlayer;
 
         public bool isUpPressed, isDownPressed;//can be acces in other file    
 
         bool? accelerationPlayer;
         int nbrTickAccSameDir;
+
+        public int score;
+
+        /*
+        int _score;
+
+        public int score
+        {
+            get
+            {
+                return _score;
+            }
+            set
+            {
+                _score = value;
+                //the value who is set
+                scorePlayer.Text = score.ToString();
+            }
+        }*/
         
 
         //constructeur
-        public Player(PictureBox barPlayer1)
+        public Player(PictureBox barPlayer, Label scorePlayer)
         {
-            this.barPlayer = barPlayer1;
+            this.barPlayer = barPlayer;
+            this.scorePlayer = scorePlayer;
         }
 
         internal void mvmtForPlayer()

@@ -9,6 +9,6 @@ namespace pongGame
 
     public static class MapInfo// can not create a object, Global info
     {
-        public const int TOP_MAP = 1, BOTTOM_MAP = 862;
+        public const int TOP_MAP = 1, BOTTOM_MAP = 862, leftMap = 0, rigthMap = 1200;
     }
 }
